@@ -1,0 +1,26 @@
+# Base class: Book
+class Book:
+    def __init__(self, title, author, pages):
+        self.title = title
+        self.author = author
+        self.pages = pages
+
+    def info(self):
+        return f"'{self.title}' by {self.author}, {self.pages} pages"
+
+# Inheritance: EBook inherits from Book
+class EBook(Book):
+    def __init__(self, title, author, pages, file_size_mb):
+        super().__init__(title, author, pages)
+        self.file_size_mb = file_size_mb
+
+    def info(self):
+        # Polymorphism: override info method
+        return f"'{self.title}' by {self.author}, {self.pages} pages, File Size: {self.file_size_mb}MB"
+
+# Example usage
+physical_book = Book("1984", "George Orwell", 328)
+ebook = EBook("Python 101", "John Doe", 250, 5)
+
+print(physical_book.info())
+print(ebook.info())
